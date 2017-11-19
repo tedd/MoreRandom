@@ -6,8 +6,7 @@ namespace Tedd.MoreRandom.Test
     public class BoundaryTest
     {
         private Tedd.MoreRandom.Random _trueRandom = new Tedd.MoreRandom.Random();
-        private System.Random _systemRandom = new System.Random();
-        private const int TestIterations = 1000000;
+        private const int TestIterations = 10000000;
 
         [InlineData(-1)]
         [InlineData(0)]

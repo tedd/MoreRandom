@@ -6,16 +6,12 @@ namespace Tedd.MoreRandom
 {
     public class Random : IDisposable
     {
-        private readonly RNGCryptoServiceProvider _rng;
+    
+        private readonly RandomNumberGenerator _rng;
 
         public Random()
         {
-            _rng = new RNGCryptoServiceProvider();
-        }
-
-        public Random(int seed)
-        {
-            _rng = new RNGCryptoServiceProvider(BitConverter.GetBytes(seed));
+            _rng = RandomNumberGenerator.Create();
         }
 
         /// <summary>

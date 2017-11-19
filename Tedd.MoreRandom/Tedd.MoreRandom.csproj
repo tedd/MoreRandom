@@ -1,7 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Tedd Hansen</Authors>
+    <Company>Tedd Hansen</Company>
+    <Description>Tedd.MoreRandom.Random is a replacement for System.Random, but give you more randomness by using RandomNumberGenerator.
+	
+	This implementation is kept simple and is extensively tested. It's goal is to meet expectation with no surprises.
+
+RandomNumberGenerator provides crypto grade randomness, and is better known as the random generator found in System.Security.Cryptography.RNGCryptoServiceProvider. It gets random data from the operating system.</Description>
+    <Copyright>Copyright © 2017 Tedd Hansen</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/tedd/MoreRandom</PackageProjectUrl>
+    <PackageIconUrl>http://github.com/contoso/UsefulStuff/nuget_icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/tedd/MoreRandom</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>random rnd rng randomnumbergenerator</PackageTags>
+    <PackageReleaseNotes>Initial release. Simple and well-tested code.</PackageReleaseNotes>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Tedd.MoreRandom.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>

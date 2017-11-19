@@ -6,8 +6,25 @@ namespace Tedd.MoreRandom.Test
     public class RandomTest
     {
         private Tedd.MoreRandom.Random _trueRandom = new Tedd.MoreRandom.Random();
-        private System.Random _systemRandom = new System.Random();
         private const int TestIterations = 10000000;
+
+        [InlineData(0, 4)]
+        [InlineData(10, 21)]
+        [InlineData(-10223, 165373)]
+        [Theory]
+        public void Next_min_max(int min, int max)
+        {
+            ulong accumulated = 0;
+            for (int i = 0; i < TestIterations; i++)
+            {
+                accumulated += (ulong)_trueRandom.Next(min, max);
+            }
+            decimal avg = (decimal)accumulated / (decimal)TestIterations;
+
+            // We expect average of high amount of random numbers to be close to 0.5D.
+            var diff = min - Math.Abs(avg - (decimal)((max - 1 - min) * 0.5m));
+            Assert.True(diff < 0.01m, $"Diff {diff} must be less than 0.01m");
+        }
 
         [Fact]
         public void NextDouble()
@@ -15,12 +32,13 @@ namespace Tedd.MoreRandom.Test
             decimal accumulated = 0;
             for (int i = 0; i < TestIterations; i++)
             {
-                accumulated+= (decimal)_trueRandom.NextDouble();
+                accumulated += (decimal)_trueRandom.NextDouble();
             }
             accumulated /= TestIterations;
 
             // We expect average of high amount of random numbers to be close to 0.5D.
-            Assert.True(Math.Abs((double)accumulated - 0.5D) < 0.01D);
+            var diff = Math.Abs((decimal)accumulated - 0.5m);
+            Assert.True(diff < 0.01m, $"Diff {diff} must be less than 0.01m");
         }
 
         [InlineData(1)]
@@ -29,25 +47,27 @@ namespace Tedd.MoreRandom.Test
         [Theory]
         public void NextBytes(int size)
         {
-            decimal accumulated = 0;
-            
-            for (int i = 0; i < TestIterations; i++)
+            ulong accumulated = 0;
+
+            // If the sample set is too small we need to loop a few times extra to get enough statistical data
+            var loops = (int)Math.Ceiling(50f / (float)size);
+
+            for (var loop = 0; loop < loops; loop++)
             {
-                var buffer = new byte[size];
-                _trueRandom.NextBytes(buffer);
-
-                ulong t = 0;
-                foreach (var b in buffer)
+                for (int i = 0; i < TestIterations; i++)
                 {
-                    t += b;
-                }
+                    var buffer = new byte[size];
+                    _trueRandom.NextBytes(buffer);
 
-                accumulated += (decimal)t / (decimal)size;
+                    foreach (var b in buffer)
+                        accumulated += (ulong)b;
+                }
             }
-            accumulated /= TestIterations;
+            var avg = (decimal)accumulated / (decimal)(TestIterations * size * loops);
 
             // We expect average of high amount of random numbers to be close to 127.5D.
-            Assert.True(Math.Abs((double)accumulated - 127.5D) < 0.01D);
+            var diff = Math.Abs(avg - 127.5m);
+            Assert.True(diff < 0.01m, $"Diff {diff} must be less than 0.01m");
         }
 
     }
