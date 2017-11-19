@@ -7,7 +7,7 @@ System.Random is based on so called "pseudorandom" algorithm. This means that gi
 System.Security.Cryptography.RNGCryptoServiceProvider provides "cryptography grade random" numbers. These numbers are a bit more random as they are provided by the operating system, which has methods of collecting random data.
 
 ## Sauce
-RNGCryptoServiceProvider gives you a bunch of random bytes. It's up to you to convert to a number and size for whatever purpose. Random however has a simple interface, for example rnd.Next(10).
+RNGCryptoServiceProvider gives you a bunch of random bytes. It's up to you to convert to a number and size for whatever purpose. System.Random however has a simple interface, for example rnd.Next(10).
 
 This is where MoreRandom comes in. Tedd.MoreRandom.Random mimics System.Random and is a drop-in replacement. You get the power of RNGCryptoServiceProvider with the ease of System.Random.
 
