@@ -5,9 +5,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Tedd Hansen</Authors>
     <Company>Tedd Hansen</Company>
-    <Description>Tedd.MoreRandom.Random is a replacement for System.Random, but give you more randomness by using RandomNumberGenerator.
-	
-	This implementation is kept simple and is extensively tested. It's goal is to meet expectation with no surprises.
+    <Description>Tedd.MoreRandom.Random is a replacement for System.Random, but give you more randomness by using RandomNumberGenerator. Its not true random, but its more random than Random.
+
+This implementation is kept simple and is extensively tested. It's goal is to meet expectation with no surprises.
 
 RandomNumberGenerator provides crypto grade randomness, and is better known as the random generator found in System.Security.Cryptography.RNGCryptoServiceProvider. It gets random data from the operating system.</Description>
     <Copyright>Copyright © 2017 Tedd Hansen</Copyright>
