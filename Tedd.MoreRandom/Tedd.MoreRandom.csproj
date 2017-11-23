@@ -17,9 +17,10 @@ RandomNumberGenerator provides crypto grade randomness, and is better known as t
     <RepositoryUrl>https://github.com/tedd/MoreRandom</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>random rnd rng randomnumbergenerator</PackageTags>
-    <PackageReleaseNotes>Initial release. Simple and well-tested code.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added GetByteArray</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Tedd.MoreRandom.pfx</AssemblyOriginatorKeyFile>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>

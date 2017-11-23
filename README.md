@@ -9,7 +9,8 @@ Works exactly like [System.Random](https://msdn.microsoft.com/en-us/library/syst
 	var dice = rnd.Next(1, 7); // A random number between 1 and 6 inclusive
 	rnd.Dispose();
 
-	
+Or with using:
+
 	using (var rnd = new Tedd.MoreRandom.Random()) {
 		var percent = rnd.NextDouble() * 100;
 		Console.WriteLine($"You are {percent}% done, please wait...");
@@ -44,4 +45,4 @@ This is where MoreRandom comes in. Tedd.MoreRandom.Random mimics System.Random a
 Created using .Net Standard 1.3.
 
 ## Unit testing
-xUnit in .Net Core with near 100% code coverage. Boundary checks as well as average check on vast number of samples.
+xUnit in .Net Core with near 100% code coverage. Boundary checks as well as average check (for statistical distribution) on vast number of samples.

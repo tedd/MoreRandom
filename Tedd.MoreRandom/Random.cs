@@ -66,7 +66,7 @@ namespace Tedd.MoreRandom
                     | (result[2] << 8)
                     | result[3]);
                 var d = (double)i / (double)UInt32.MaxValue;
-                val = minValue + (int)(uint)(d * (double)diff);
+                val = minValue + (int)(d * (double)diff);
 
                 if (val < maxValue) // Unlikely that we'll get 1.0D, but a promise is a promise.
                     break;
@@ -81,6 +81,16 @@ namespace Tedd.MoreRandom
         public void NextBytes(byte[] buffer)
         {
             _rng.GetBytes(buffer);
+        }
+
+        /// <summary>
+        /// Generates an array and fills the byte elements with random numbers.
+        /// </summary>
+        public byte[] GetByteArray(int size)
+        {
+            var buffer = new byte[size];
+            _rng.GetBytes(buffer);
+            return buffer;
         }
 
         /// <summary>
